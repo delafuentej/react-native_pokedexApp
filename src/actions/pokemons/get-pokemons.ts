@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { pokeApi } from "../../config/api/pokeApi";
-import { Pokemon } from "../../domain/entities/pokemon";
+import type { Pokemon } from "../../domain/entities/pokemon";
+import type { PokeAPIPaginatedResponse, PokeAPIPokemon } from "../../infrastructure/interfaces/pokeApi.interfaces";
 
 
 
@@ -8,16 +9,23 @@ import { Pokemon } from "../../domain/entities/pokemon";
 //     return new Promise(resolve => setTimeout(resolve, 2000));
 // };
 
-export const getPokemons = async(): Promise<Pokemon[]>=> {
+export const getPokemons = async( page: number, limit: number = 20): Promise<Pokemon[]>=> {
 
         // await loadingDelay();
     try{
-        const url = '/pokemon';
-        const {data} = await pokeApi.get(url);
-        console.log('data', data);
+        const url = `/pokemon?offset=${page * 10}&limit=${limit}`;
+        const {data} = await pokeApi.get< PokeAPIPaginatedResponse>(url);
+
+        const pokemonPromises = data.results.map((info) =>{
+            return pokeApi.get<PokeAPIPokemon>(info.url);
+        });
+
+        const pokeApiPokemons = await Promise.all(pokemonPromises);
+        console.log('data', pokeApiPokemons);
 
         return [];
     }catch(error){
-        throw new Error('Error getting pokemons')
+        console.log('error', error);
+        throw new Error('Error getting pokemons');
     }
 }
