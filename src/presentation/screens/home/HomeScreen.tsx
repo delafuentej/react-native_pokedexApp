@@ -1,8 +1,11 @@
+/* eslint-disable jsx-quotes */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import { Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View } from 'react-native';
+import { Text , Button } from 'react-native-paper';
+// import Icon from 'react-native-vector-icons/Ionicons';
+
 
 
 
@@ -11,7 +14,13 @@ export const HomeScreen = () => {
   return (
     <View>
         <Text>HomeScreen</Text>
-        <Icon name='arrow-forward-outline' size={25} color='red'/>
+        <Button
+          // icon={() => (<Icon name= 'camera-outline' size={25} color='green' />)}
+          mode='contained'
+          onPress={()=> console.log('pressed')}
+        >Press Me
+        </Button>
+      
         
     </View>
   );

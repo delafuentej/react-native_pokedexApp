@@ -1,15 +1,15 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable prettier/prettier */
 import 'react-native-gesture-handler';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigator } from './presentation/navigation/StackNavigator';
-import { PaperProvider } from 'react-native-paper';
+import { ThemeContextProvider } from './presentation/context/ThemeContext';
 
 export const App = () => {
   return (
-    <PaperProvider>
-      <NavigationContainer>
-          <StackNavigator />
-      </NavigationContainer>
-    </PaperProvider>
+   <ThemeContextProvider>
+       <StackNavigator />
+   </ThemeContextProvider>
+
   );
 };
