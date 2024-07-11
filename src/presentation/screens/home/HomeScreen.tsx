@@ -4,6 +4,7 @@
 
 import { View } from 'react-native';
 import { Text , Button } from 'react-native-paper';
+import { getPokemons } from '../../../actions/pokemons';
 // import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -11,6 +12,7 @@ import { Text , Button } from 'react-native-paper';
 
 
 export const HomeScreen = () => {
+
   return (
     <View>
         <Text>HomeScreen</Text>
