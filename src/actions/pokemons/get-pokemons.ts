@@ -6,6 +6,10 @@ import { PokemonMapper } from "../../infrastructure/mappers/pokemon.mapper";
 
 
 
+
+
+
+
 // export const loadingDelay = async() => {
 //     return new Promise(resolve => setTimeout(resolve, 2000));
 // };
