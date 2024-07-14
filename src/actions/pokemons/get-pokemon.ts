@@ -17,7 +17,7 @@ export const getPokemonById = async( id: number) : Promise<Pokemon> => {
 
 
     }catch(error){
-    console.log('error', error);
-        throw new Error(`Error getting pokemon by Id:${id}`);
+        console.log('error', error);
+        throw new Error(`Error getting pokemon By  Id: ${id}`);
     }
-}
+};
