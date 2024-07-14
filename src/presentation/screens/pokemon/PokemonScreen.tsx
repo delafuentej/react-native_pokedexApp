@@ -97,7 +97,7 @@ export const PokemonScreen = ({navigation, route}:Props) => {
       keyExtractor={item => item}
       showsHorizontalScrollIndicator={false}
       renderItem={({item})=> (
-        <Chip  mode="outlined"  style={ { marginLeft: 10 } } selectedColor="white">{Formatter.capitalize(item)}</Chip>
+        <Chip  mode="outlined"  style={{ marginLeft: 10 }} selectedColor="white">{Formatter.capitalize(item)}</Chip>
       )}
     
     />
@@ -141,7 +141,7 @@ export const PokemonScreen = ({navigation, route}:Props) => {
       keyExtractor={item => item}
       showsHorizontalScrollIndicator={false}
       renderItem={({item})=> (
-        <Chip  mode="outlined"  style={ { marginLeft: 10 } }selectedColor="white">{Formatter.capitalize(item)}</Chip>
+        <Chip  mode="outlined"  style= {{ marginLeft: 10 }} selectedColor="white">{Formatter.capitalize(item)}</Chip>
       )}
     />
 
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     padding: 10,
     minWidth:100,
     borderRadius: 10,
-    borderColor: 'rgba(255,255,255,0.5)',
+    borderColor: 'rgba(255,255,255,0.4)',
 
   },
   
