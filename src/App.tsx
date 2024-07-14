@@ -6,6 +6,7 @@ import { StackNavigator } from './presentation/navigation/StackNavigator';
 import { ThemeContextProvider } from './presentation/context/ThemeContext';
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
+// queryClient => hear the entire cache is stored
 const queryClient = new QueryClient();
 
 

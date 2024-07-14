@@ -41,7 +41,7 @@ export const PokemonScreen = ({navigation, route}:Props) => {
       showsVerticalScrollIndicator={ false }>
     {/* Header Container */ }
     <View style={ styles.headerContainer }>
-      {/* Nombre del Pokemon */ }
+      {/* Name Pokemon */ }
       <Text
         style={ {
           ...styles.pokemonName,
