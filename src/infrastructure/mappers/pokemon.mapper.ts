@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { CollapsedItem } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
-import type{ Pokemon } from "../../domain/entities/pokemon";
-import type{ PokeAPIPokemon } from "../interfaces/pokeApi.interfaces";
-import {getColorFromImg} from '../../config/helpers/get-color'
+import type{ Pokemon } from '../../domain/entities/pokemon';
+import type{ PokeAPIPokemon } from '../interfaces/pokeApi.interfaces';
+import {getColorFromImg} from '../../config/helpers/get-color';
+
 
 
 
@@ -22,6 +22,13 @@ export class PokemonMapper {
             avatar: avatar,
             sprites:sprites,
             color: color,
+
+            games: data.game_indices.map( item => item.version.name),
+            stats: data.stats.map( item => ({name: item.stat.name, value: item.base_stat})),
+            abilities: data.abilities.map( item => item.ability.name),
+            moves: data.moves
+              .map( item => ({name: item.move.name, level: item.version_group_details[0].level_learned_at}))
+              .sort((a,b)=> (a.level - b.level )),
         };
     }
     static getSprites(data: PokeAPIPokemon): string[] {

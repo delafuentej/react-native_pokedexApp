@@ -53,7 +53,7 @@ export const PokemonScreen = ({navigation, route}:Props) => {
       {/* Pokeball */ }
       <Image source={ pokeBallImg } style={ styles.pokeball } />
   
-      <FadeInImage uri={ pokemon.avatar} style={ styles.pokemonImage } />
+      <FadeInImage uri={ pokemon?.avatar} style={ styles.pokemonImage } />
     </View>
   
     {/* Types */ }
@@ -88,10 +88,69 @@ export const PokemonScreen = ({navigation, route}:Props) => {
         />
       ) }
     />
-    <View style={ { height: 100 } } />
+   
+    {/* abilities */}
+    <Text style={styles.subTitle}>Abilities</Text>
+    <FlatList 
+      data={pokemon?.abilities}
+      horizontal
+      keyExtractor={item => item}
+      showsHorizontalScrollIndicator={false}
+      renderItem={({item})=> (
+        <Chip  mode="outlined"  style={ { marginLeft: 10 } } selectedColor="white">{Formatter.capitalize(item)}</Chip>
+      )}
+    
+    />
+    {/* stats */}
+    <Text style={styles.subTitle}>Stats</Text>
+    <FlatList 
+      data={pokemon?.stats}
+      horizontal
+      keyExtractor={item => item.name}
+      showsHorizontalScrollIndicator={false}
+      renderItem={({item})=> (
+        <View style={styles.statsContainer}>
+          <Text style={{flex:1, color:'white'}}>
+            {Formatter.capitalize(item.name)}
+          </Text>
+          <Text style={{color: 'white'}}>{item.value}</Text>
+        </View>
+      )}
+    />
+  {/* moves */}
+  <Text style={styles.subTitle}>Moves</Text>
+    <FlatList 
+      data={pokemon?.moves}
+      horizontal
+      centerContent
+      showsHorizontalScrollIndicator={false}
+      renderItem={({item})=> (
+        <View style={styles.statsContainer}>
+          <Text style={{flex:1, color:'white'}}>
+            {Formatter.capitalize(item.name)}
+          </Text>
+          <Text style={{color: 'white'}}>{item.level}</Text>
+        </View>
+      )}
+    />
+    {/* games */}
+    <Text style={styles.subTitle}>Games</Text>
+    <FlatList 
+      data={pokemon?.games}
+      horizontal
+      keyExtractor={item => item}
+      showsHorizontalScrollIndicator={false}
+      renderItem={({item})=> (
+        <Chip  mode="outlined"  style={ { marginLeft: 10 } }selectedColor="white">{Formatter.capitalize(item)}</Chip>
+      )}
+    />
+
+<View style={ { height: 100 } } />
   </ScrollView>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -134,8 +193,15 @@ const styles = StyleSheet.create({
   },
   statsContainer: {
     flexDirection: 'column',
-    marginHorizontal: 20,
+    marginLeft: 10,
     alignItems: 'center',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    padding: 10,
+    minWidth:100,
+    borderRadius: 10,
+    borderColor: 'rgba(255,255,255,0.5)',
+
   },
   
 });
